@@ -31,8 +31,8 @@ async function fetchUrl(url, options) {
         // arr.push(result.results)
 
         for (let i = 0; i < result.results.length; i++) {
-            let perent = document.createElement("div")
-            perent.classList.add("perent")
+            let parent = document.createElement("div")
+            parent.classList.add("parent")
             let div = document.createElement("div")
             div.classList.add("div")
             let img = document.createElement("img")
@@ -41,8 +41,8 @@ async function fetchUrl(url, options) {
             let image = basicUrl + result.results[i].poster_path
             img.src = image
             div.append(img, name)
-            perent.append(div)
-            trendingsection.append(perent)
+            parent.append(div)
+            trendingsection.append(parent)
         }
     }
 
