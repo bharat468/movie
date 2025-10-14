@@ -73,11 +73,12 @@ header {
     padding: 10px;
     color: white;
     transition: all .2s linear;
+    border-radius: 10px;
 }
 
 .div:hover{
     transform: scale(1.1);
-
+    box-shadow: 0 5px 19px rgb(255, 0, -5);
 }
 .div img {
     width: 100%;
