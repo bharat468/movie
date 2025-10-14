@@ -25,7 +25,7 @@ let API = {
     popularMovie: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
     popularTvshows: "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1",
     topratedMovie: "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
-    topRatedTvshows: "https://api.themoviedb.org/3/tv/series_id/rating",
+    topRatedTvshows: "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1",
 }
 
 window.addEventListener("load", () => {
