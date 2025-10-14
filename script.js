@@ -29,7 +29,7 @@ let API = {
 }
 
 window.addEventListener("load", () => {
-    fetchUrl()
+    fetchUrl(API.trendingMovieday, trendingsection)
 })
 
 let basicUrl = "https://image.tmdb.org/t/p/w500"
