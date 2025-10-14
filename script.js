@@ -27,7 +27,7 @@ let API = {
     topratedMovie: "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
     topRatedTvshows: "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1",
 }
- 
+
 window.addEventListener("load", () => {
     fetchUrl(API.trendingMovieday, trendingsection)
 })
@@ -47,20 +47,18 @@ async function fetchUrl(url, section) {
     DisplayPrint(result.results, section)
 }
 
-
-
-
 async function DisplayPrint(movieimage, section) {
     movieimage.forEach(e => {
         let div = document.createElement("div")
         div.classList.add("div")
         let img = document.createElement("img")
         img.classList.add("image")
-        let name = document.createElement("h3")
-        name.innerHTML = e.title || e.name
+        let heading = document.createElement("h3")
+        let name = e.title || e.name
+        heading.innerText = name.length > 10 ? name.slice(0, 10) + "..." : name
         let image = basicUrl + e.poster_path
         img.src = image
-        div.append(img, name)
+        div.append(img, heading)
         section.append(div)
     });
 }
