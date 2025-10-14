@@ -27,7 +27,7 @@ let API = {
     topratedMovie: "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
     topRatedTvshows: "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1",
 }
-
+ 
 window.addEventListener("load", () => {
     fetchUrl(API.trendingMovieday, trendingsection)
 })
@@ -69,7 +69,7 @@ trendingMoviesDaybtn.addEventListener("click", () => {
     fetchUrl(API.trendingMovieday, trendingsection)
 })
 
-trendingMoviesweekbtn.addEventListener("click", ()=>{
+trendingMoviesweekbtn.addEventListener("click", () => {
     fetchUrl(API.trendingMoviesweek, trendingsection)
 
 })
