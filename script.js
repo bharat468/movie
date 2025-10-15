@@ -46,16 +46,17 @@ async function fetchUrl(url, section) {
 
     let responce = await fetch(url, options)
     let result = await responce.json()
-    DisplayPrint(result.results, section.querySelector(".swiper-wrapper"))
+    let wrapper = section.querySelector(".swiper-wrapper")
+    wrapper.innerHTML = ""
+    DisplayPrint(result.results, wrapper)
 
-    new Swiper(section.querySelector(".swiper"), {
+     new Swiper(section.querySelector(".swiper"), {
         slidesPerView: 5,
         spaceBetween: 20,
         loop: true,
         grabCursor: true,
-        centeredSlides: false,
         autoplay: {
-            delay: 3500,
+            delay: 2500,
             disableOnInteraction: false,
         },
         pagination: {
@@ -71,7 +72,6 @@ async function fetchUrl(url, section) {
 }
 
 async function DisplayPrint(movieimage, wrapper) {
-    wrapper.innerHTML = ""
     movieimage.forEach(e => {
         let div = document.createElement("div")
         div.classList.add("swiper-slide")
