@@ -54,10 +54,10 @@ async function fetchUrl(url, section) {
         loop: true,
         grabCursor: true,
         centeredSlides: false,
-        // autoplay: {
-        //     // delay: 500,
-        //     disableOnInteraction: false,
-        // },
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
         pagination: {
             el: section.querySelector(".swiper-pagination"),
             clickable: true,
