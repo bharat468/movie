@@ -8,6 +8,7 @@ let popularTvshowsbtn = document.querySelector("#popularTvshows")
 let topRatedMoviesbtn = document.querySelector("#topRatedMovies")
 let topRatedTvshowsbtn = document.querySelector("#topRatedTvshows")
 
+let backimage = document.querySelector(".backimage")
 
 
 const options = {
@@ -17,6 +18,16 @@ const options = {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNmE3ZTdkYjc3NzFkN2VhNjZhMWU1MjNjNDdkNjdlNSIsIm5iZiI6MTc2MDMzNTM3OC4wNDcwMDAyLCJzdWIiOiI2OGVjOTYxMjhjM2M5MDQ0NGY5ZGVhODYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.sSGrXplnrP_ocye3XQU7JB8Yg16cz8jh9eSp1Uqpjv0'
     }
 }
+
+let backgroundImageArr = []
+console.log(backgroundImageArr);
+
+function getrandom() {
+    let radomimage = Math.floor(Math.random() * backgroundImageArr.length)
+    backimage.style.backgroundImage = `url(${backgroundImageArr[radomimage]})`
+    backimage.style.backgroundSize = "cover"
+}
+
 
 // let arr = [];
 let API = {
@@ -50,15 +61,17 @@ async function fetchUrl(url, section) {
     wrapper.innerHTML = ""
     DisplayPrint(result.results, wrapper)
 
-     new Swiper(section.querySelector(".swiper"), {
-        slidesPerView: 5,
-        spaceBetween: 20,
+    new Swiper(section.querySelector(".swiper"), {
+        slidesPerView: 4,
+        spaceBetween: 30,
         loop: true,
         grabCursor: true,
         autoplay: {
             delay: 2500,
             disableOnInteraction: false,
         },
+
+
         pagination: {
             el: section.querySelector(".swiper-pagination"),
             clickable: true,
@@ -66,7 +79,7 @@ async function fetchUrl(url, section) {
         breakpoints: {
             320: { slidesPerView: 2 },
             640: { slidesPerView: 3 },
-            1024: { slidesPerView: 5 },
+            1024: { slidesPerView: 6 },
         },
     });
 }
@@ -82,6 +95,9 @@ async function DisplayPrint(movieimage, wrapper) {
         heading.innerText = name.length > 10 ? name.slice(0, 10) + "..." : name
         let image = basicUrl + e.poster_path
         img.src = image
+
+        let backgroundImage = basicUrl + e.backdrop_path
+        backgroundImageArr.push(getrandom() || backgroundImage)
         div.append(img, heading)
         wrapper.append(div)
     });
