@@ -30,6 +30,9 @@ let API = {
 
 window.addEventListener("load", () => {
     fetchUrl(API.trendingMovieday, trendingsection)
+    fetchUrl(API.popularMovie, popularsection)
+    fetchUrl(API.topratedMovie, topratedsection)
+
 })
 
 let basicUrl = "https://image.tmdb.org/t/p/w500"
@@ -43,14 +46,35 @@ async function fetchUrl(url, section) {
 
     let responce = await fetch(url, options)
     let result = await responce.json()
-    section.innerHTML = ""
-    DisplayPrint(result.results, section)
+    DisplayPrint(result.results, section.querySelector(".swiper-wrapper"))
+
+    new Swiper(section.querySelector(".swiper"), {
+        slidesPerView: 5,
+        spaceBetween: 20,
+        loop: true,
+        grabCursor: true,
+        centeredSlides: false,
+        // autoplay: {
+        //     // delay: 500,
+        //     disableOnInteraction: false,
+        // },
+        pagination: {
+            el: section.querySelector(".swiper-pagination"),
+            clickable: true,
+        },
+        breakpoints: {
+            320: { slidesPerView: 2 },
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 5 },
+        },
+    });
 }
 
-async function DisplayPrint(movieimage, section) {
+async function DisplayPrint(movieimage, wrapper) {
+    wrapper.innerHTML = ""
     movieimage.forEach(e => {
         let div = document.createElement("div")
-        div.classList.add("div")
+        div.classList.add("swiper-slide")
         let img = document.createElement("img")
         img.classList.add("image")
         let heading = document.createElement("h3")
@@ -59,7 +83,7 @@ async function DisplayPrint(movieimage, section) {
         let image = basicUrl + e.poster_path
         img.src = image
         div.append(img, heading)
-        section.append(div)
+        wrapper.append(div)
     });
 }
 
